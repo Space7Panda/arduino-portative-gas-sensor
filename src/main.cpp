@@ -20,8 +20,6 @@ bool disableDiodeYellow(void *)
 
 void setup()
 {
-  Serial.begin(9600);
-
   digitalWrite(diodeYellow, HIGH);
 
   timer.in(20000, disableDiodeYellow);
@@ -31,19 +29,14 @@ void loop()
 {
   sensorValue = analogRead(MQ2pinA);
 
-  Serial.print("Sensor Value A: ");
-  Serial.print(sensorValue);
-
   if (sensorValue > 300)
   {
     digitalWrite(diodeRed, HIGH);
-    Serial.print(" | Smoke detected!");
   }
   else
   {
     digitalWrite(diodeRed, LOW);
   }
 
-  Serial.println("");
   delay(200);
 }
